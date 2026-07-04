@@ -5,7 +5,9 @@ import br.com.aulaspring.aulaspring.entities.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.testcontainers.containers.GenericContainer;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.stereotype.Service;
+import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -16,7 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CustomerCreatePortTest {
 
   @Container
-  private static final GenericContainer<?> postgres = new GenericContainer<>("postgres:latest");
+  @ServiceConnection
+  private static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer("postgres:latest");
 
   @Autowired
   private CustomerCreatePort customerCreatePort;
