@@ -1,27 +1,14 @@
 package br.com.aulaspring.aulaspring.applications.customer;
 
+import br.com.aulaspring.aulaspring.AbstractIntegrationTest;
 import br.com.aulaspring.aulaspring.entities.Address;
 import br.com.aulaspring.aulaspring.entities.Customer;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@Testcontainers
-class CustomerDeletePortTest {
-
-  @Container
-  @ServiceConnection
-  private static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer("postgres:latest");
+class CustomerDeletePortTest extends AbstractIntegrationTest {
 
   @Autowired
   private CustomerDeletePort customerDeletePort;
